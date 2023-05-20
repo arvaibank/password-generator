@@ -46,7 +46,9 @@ public class GUI implements ActionListener {
 
         listPasswords();
         frame.pack();
-        frame.setLocationByPlatform(true);
+        frame.setLocationRelativeTo(null); // Center the frame on the screen
+        ImageIcon icon = new ImageIcon("lock_password_icon_206025.png");
+        frame.setIconImage(icon.getImage());
         frame.setVisible(true);
     }
 
@@ -107,11 +109,25 @@ public class GUI implements ActionListener {
         List<String> passwords = readFile.read(filename);
 
         panel.removeAll();
-        panel.setLayout(new GridLayout(passwords.size() + 3, 1)); // +3 for systemLabel, textField, and button
-        panel.add(systemLabel);
-        panel.add(textField);
-        panel.add(button);
+        panel.setLayout(new GridBagLayout()); // Use GridBagLayout for centering
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5); // Add some padding
 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(systemLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(textField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(button, gbc);
+
+        int row = 3;
         for (String currentPassword : passwords) {
             JTextField contentField = new JTextField(currentPassword);
             contentField.setEditable(false);
@@ -125,7 +141,15 @@ public class GUI implements ActionListener {
                     }
                 }
             });
-            panel.add(contentField);
+
+            gbc.gridx = 0;
+            gbc.gridy = row;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            panel.add(contentField, gbc);
+
+            row++;
         }
 
         frame.revalidate();
