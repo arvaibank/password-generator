@@ -23,6 +23,7 @@ public class GUI implements ActionListener {
     private int passwordLength;
     private String website = "starterValue";
     private String password = "starterValue";
+    public static final String FILE_PATH = "./src/main/resources/jelszavak.txt";
 
     public GUI() {
         frame = new JFrame();
@@ -47,7 +48,7 @@ public class GUI implements ActionListener {
         listPasswords();
         frame.pack();
         frame.setLocationRelativeTo(null); // Center the frame on the screen
-        ImageIcon icon = new ImageIcon("lock_password_icon_206025.png");
+        ImageIcon icon = new ImageIcon("./src/main/resources/lock_password_icon_206025.png");
         frame.setIconImage(icon.getImage());
         frame.setVisible(true);
     }
@@ -104,9 +105,8 @@ public class GUI implements ActionListener {
     }
 
     private void listPasswords() {
-        String filename = "jelszavak.txt";
         ReadFile readFile = new ReadFile();
-        List<String> passwords = readFile.read(filename);
+        List<String> passwords = readFile.read(FILE_PATH);
 
         panel.removeAll();
         panel.setLayout(new GridBagLayout()); // Use GridBagLayout for centering

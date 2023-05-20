@@ -1,24 +1,18 @@
 package ltd.arvai.file_handle;
 
-import ltd.arvai.display.Output;
-
 import java.io.File;
 import java.io.IOException;
 
 public class CreateFile {
-    public void create(String filename) {
-        Output output = new Output();
-        File file = new File(filename);
+    public void create(String filePath) {
+        File file = new File(filePath);
         try {
-            // Create a new file
             boolean created = file.createNewFile();
             if (!created) {
-                output.output("Nem sikerült létrehozni a fájlt.");
-                return;
+                //TODO implement graphic error message
             }
         } catch (IOException e) {
-            output.output("Hiba történt: " + e.getMessage());
-            return;
+            //TODO implement graphic error message
         }
     }
 }
