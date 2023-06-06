@@ -83,6 +83,6 @@ class GeneratorTest {
         boolean matcherAssertion = matcher.find();
         Assertions.assertTrue(matcherAssertion);
     }
-    
 
+    // tests are complete
 }
