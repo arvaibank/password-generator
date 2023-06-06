@@ -32,7 +32,7 @@ public class Generator {
             sb.append(NUMBERS.charAt(random.nextInt(NUMBERS.length())));
 
             // Generate remaining characters
-            int remainingLength = length - 4; // subtract 3 for the already generated characters
+            int remainingLength = length - 4; // subtract 4 for the already generated characters
             String combinedChars = LOWER_CASE + UPPER_CASE + NUMBERS;
             for (int i = 0; i < remainingLength; i++) {
                 sb.append(combinedChars.charAt(random.nextInt(combinedChars.length())));
