@@ -12,7 +12,7 @@ public class Generator {
         StringBuilder sb = new StringBuilder();
         SecureRandom random = new SecureRandom();
 
-        if (length < 3) {
+        if (length < 4) {
             String combinedChars = LOWER_CASE + UPPER_CASE + NUMBERS +SYMBOLS;
             for (int i = 0; i < length; i++) {
                 sb.append(combinedChars.charAt(random.nextInt(combinedChars.length())));
